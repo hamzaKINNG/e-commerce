@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Cart Page</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    .quantity {
+      display: flex;
+      align-items: center;
+    }
+
+    .quantity input {
+      width: 40px;
+      text-align: center;
+    }
+
+    .quantity .btn {
+      padding: 0.375rem 0.75rem;
+    }
+   th {
+    text-align: center;
+   }
+   td{
+    text-align: center;
+   }
+
+  </style>
+</head>
+<body>
+  <nav class="navbar navbar-expand navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">My Store</a>
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="../index.php">Home</a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Cart</a>
+      </li>
+    </ul>
+  </nav>
+
+  <div class="container">
+    <h1>Cart Page</h1>
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th >Product</th>
+          <th>Price</th>
+          <th>Quantity</th>
+          <th>Total</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- <tr>
+          <td>
+            <img src="./images/shoes-img1.png" alt="Product 1" class="img-fluid" width="140">
+            Men Sports
+          </td>
+          <td>$90</td>
+          <td class="quantity">
+            <button class="btn btn-sm btn-secondary minus-btn">-</button>
+            <input type="number" min="1" value="2" data-price="90">
+            <button class="btn btn-sm btn-secondary plus-btn">+</button>
+          </td>
+          <td class="total">$90</td>
+        </tr>
+        <tr>
+          <td>
+            <img src="./images/shoes-img2.png"  alt="Product 2" class="img-fluid" width="140">
+            Men Sports
+
+
+          </td>
+          <td>$80</td>
+          <td class="quantity">
+            <button class="btn btn-sm btn-secondary minus-btn" >-</button>
+            <input type="number" min="1" value="1" data-price="80">
+            <button class="btn btn-sm btn-secondary plus-btn">+</button>
+          </td>
+          <td class="total">$80</td>
+        </tr>
+        <tr>
+          <td>
+            <img src="./images/shoes-img3.png" alt="Product 1" class="img-fluid" width="140">
+            Sale
+             JOGING
+             SHOES
+          </td>
+          <td>$100</td>
+          <td class="quantity">
+            <button class="btn btn-sm btn-secondary minus-btn">-</button>
+            <input type="number" min="1" value="2" data-price="100">
+            <button class="btn btn-sm btn-secondary plus-btn">+</button>
+          </td>
+          <td class="total">$100</td>
+        </tr>
+        <tr>
+          <td>
+            <img src="./images/H4.webp" alt="Product 1" class="img-fluid" width="140">
+            PUMA3
+          </td>
+          <td>$80</td>
+          <td class="quantity">
+            <button class="btn btn-sm btn-secondary minus-btn">-</button>
+            <input type="number" min="1" value="2" data-price="80">
+            <button class="btn btn-sm btn-secondary plus-btn">+</button>
+          </td>
+          <td class="total">$80</td>
+        </tr>
+        <tr>
+          <td>
+            <img src="./images/shoes-img5.png" alt="Product 1" class="img-fluid" width="140">
+            ADIDAS4          </td>
+          <td>$456</td>
+          <td class="quantity">
+            <button class="btn btn-sm btn-secondary minus-btn">-</button>
+            <input type="number" min="1" value="2" data-price="456">
+            <button class="btn btn-sm btn-secondary plus-btn">+</button>
+          </td>
+          <td class="total">$456</td>
+        </tr>
+        <tr>
+          <td>
+            <img src="./images/shoes-img7.png" alt="Product 1" class="img-fluid" width="140">
+            Realm
+          </td>
+          <td>$400
+          </td>
+          <td class="quantity">
+            <button class="btn btn-sm btn-secondary minus-btn">-</button>
+            <input type="number" min="1" value="2" data-price=" 400">
+            <button class="btn btn-sm btn-secondary plus-btn">+</button>
+          </td>
+          <td class="total">$400</td>
+        </tr>
+        <tr>
+          <td>
+            <img src="./images/shoes-img8.png" alt="Product 1" class="img-fluid" width="140">
+            PUMA3          </td>
+          <td>$80</td>
+          <td class="quantity">
+            <button class="btn btn-sm btn-secondary minus-btn">-</button>
+            <input type="number" min="1" value="2" data-price="80">
+            <button class="btn btn-sm btn-secondary plus-btn">+</button>
+          </td>
+          <td class="total">$80</td>
+        </tr>
+        <tr>
+          <td>
+            <img src="./images/71wb-NvBKoL._AC_UL600_FMwebp_QL65_.webp" alt="Product 1" class="img-fluid" width="140">
+            Cole Haan Men's Grand          </td>
+          <td>$150</td>
+          <td class="quantity">
+            <button class="btn btn-sm btn-secondary minus-btn">-</button>
+            <input type="number" min="1" value="2" data-price="150">
+            <button class="btn btn-sm btn-secondary plus-btn">+</button>
+          </td>
+          <td class="total">$150</td>
+        </tr>
+        </tr> -->
+        
+        
+        
+      </tbody>
+      <tfoot>
+        <tr>
+          <td colspan="3" >Subtotal</td>
+          <td id="subtotal">$</td>
+          </tr>
+      </tfoot>
+    </table>
+    
+  </div>
+  
+  <button style="float: right; margin-right: 11.5rem; " class="btn btn-primary  checkout" >check out </button>
+  <script>
+    var checkoutBtn = document.querySelector(".checkout");
+
+checkoutBtn.addEventListener("click", function() {
+  // Check if "products" object exists in local storage
+  if (localStorage.getItem("products")) {
+    // Clear the "products" object from local storage
+    localStorage.removeItem("products");
+    console.log("Local storage cleared!");
+    // Refresh the page
+    location.reload(); 
+  } else {
+    console.log("No 'products' object found in local storage.");
+  }
+});
+// Select the table body element
+var tableBody = document.querySelector('tbody');
+
+// Calculate and update the subtotal
+function calculateSubtotal() {
+  var rows = tableBody.querySelectorAll('tr');
+  var subtotal = 0;
+
+  rows.forEach(function (row) {
+    var totalCell = row.querySelector('td:last-child');
+    var price = parseFloat(totalCell.textContent.replace(/[^0-9.-]+/g, ''));
+    subtotal += price;
+  });
+
+  // Update the subtotal cell
+  document.getElementById('subtotal').textContent = '$ ' + subtotal.toFixed(2);
+}
+
+// Get the existing products from local storage
+var existingProducts = JSON.parse(localStorage.getItem('products')) || [];
+
+// Variable to store the overall total
+var overallTotal = 0;
+
+// Loop through the existing products and create a row for each product
+existingProducts.forEach(function (product) {
+  // Create a new table row
+  var row = document.createElement('tr');
+
+  // Create the table data cells for each product detail
+  var productCell = document.createElement('td');
+  productCell.innerHTML = `
+    <img src="${'.' + product.image}" alt="${product.name}" class="img-fluid" width="140">
+    ${product.name}
+  `;
+  row.appendChild(productCell);
+
+  var priceCell = document.createElement('td');
+  priceCell.textContent = product.price;
+  row.appendChild(priceCell);
+
+  var quantityCell = document.createElement('td');
+  quantityCell.innerHTML = `
+    <button class="btn btn-sm btn-secondary minus-btn">-</button>
+    <input type="number" min="1" value="1" data-price="${product.price}">
+    <button class="btn btn-sm btn-secondary plus-btn">+</button>
+  `;
+  row.appendChild(quantityCell);
+
+  var totalCell = document.createElement('td');
+  totalCell.textContent = product.price;
+  row.appendChild(totalCell);
+
+  // Append the row to the table body
+  tableBody.appendChild(row);
+
+  // Calculate and update the total for each product
+  var quantityInput = row.querySelector('input[type="number"]');
+  var minusBtn = row.querySelector('.minus-btn');
+  var plusBtn = row.querySelector('.plus-btn');
+  var productTotalCell = row.querySelector('td:last-child'); // Retrieve the total cell for the specific row
+
+  // Function to calculate the product total based on quantity
+  function updateProductTotal() {
+    var quantity = parseInt(quantityInput.value);
+    var price = parseFloat(quantityInput.dataset.price.replace(/[^0-9.-]+/g, '')); // Remove non-numeric characters from the price
+    var productTotal = quantity * price;
+    productTotalCell.textContent = '$ ' + productTotal.toFixed(2); // Update the total cell for the specific row with the currency symbol
+
+    // Update the subtotal and overall total
+    calculateSubtotal();
+    calculateOverallTotal();
+  }
+
+  // Event listener for the minus button
+  minusBtn.addEventListener('click', function () {
+    if (quantityInput.value > 1) {
+      quantityInput.value--;
+      updateProductTotal();
+    }
+  });
+
+  // Event listener for the plus button
+  plusBtn.addEventListener('click', function () {
+    quantityInput.value++;
+    updateProductTotal();
+  });
+
+  // Event listener for quantity input changes
+  quantityInput.addEventListener('change', updateProductTotal);
+
+  // Function to calculate the overall total
+  function calculateOverallTotal() {
+    overallTotal = 0;
+    var rows = document.querySelectorAll('tbody tr');
+    rows.forEach(function (
+row) {
+var totalCell = row.querySelector('td:last-child');
+var price = parseFloat(totalCell.textContent.replace(/[^0-9.-]+/g, '')); // Remove non-numeric characters from the price
+overallTotal += price;
+});
+
+// Display the overall total with the currency symbol
+document.getElementById('overall-total').textContent = '$ ' + overallTotal.toFixed(2);
+}
+});
+
+// Call the calculateSubtotal function initially to display the initial subtotal
+calculateSubtotal();
+
+
+</script>
+
+
+</body>
+</html>
